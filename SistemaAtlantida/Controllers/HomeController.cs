@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using SistemaAtlantida.Models;
 using System.Diagnostics;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace SistemaAtlantida.Controllers
 {
@@ -8,14 +11,20 @@ namespace SistemaAtlantida.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            string numeroTarjeta = "4390930039010978";
+
+            CuentaModel apiResult = await GetUser(numeroTarjeta);
+            ViewBag.loggedUser = apiResult;
+
+            return View(apiResult);
         }
 
         public IActionResult Privacy()
@@ -28,5 +37,29 @@ namespace SistemaAtlantida.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpGet]
+        public async Task<CuentaModel> GetUser(string numeroTarjeta) 
+        {
+            using (HttpClient client = new HttpClient()) 
+            {
+                CuentaModel usuario = new CuentaModel();
+                string urlAPI = $"https://localhost:7238/api/cuentas/{numeroTarjeta}";
+
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage response = await client.GetAsync(urlAPI);
+
+                if(response.IsSuccessStatusCode) 
+                {
+                    string responseJSON = await response.Content.ReadAsStringAsync();
+
+                    usuario = JsonConvert.DeserializeObject<CuentaModel>(responseJSON);
+                }
+
+                return usuario;
+            }
+        }
+
     }
 }

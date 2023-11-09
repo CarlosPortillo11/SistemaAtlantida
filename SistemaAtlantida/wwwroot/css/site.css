@@ -20,3 +20,28 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.user-navbar-name {
+    font-size: 0.9rem;
+}
+
+@media (min-width: 576px) {
+    .user-navbar-name {
+        font-size: 1.5rem;
+    }
+}
+
+.user-navbar-name {
+    font-size: 0.9rem;
+}
+
+@media (min-width: 576px) {
+    .user-navbar-name {
+        font-size: 1.5rem;
+    }
+}
+
+.user-navbar-number {
+    font-weight: 400;
+    font-size: 1rem;
+}
