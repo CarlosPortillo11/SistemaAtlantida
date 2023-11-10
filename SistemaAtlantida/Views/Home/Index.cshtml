@@ -5,4 +5,6 @@
 
 <div>
     <p>@Model.NombreTitular</p>
+    @Html.ActionLink("Ver compras", "Index", "Compras", new {numeroTarjeta = Model.NumeroTarjeta});
+    <p>Monto Reciente Total: @ViewBag.MontoRecienteTotal</p>
 </div>

@@ -22,7 +22,10 @@ namespace SistemaAtlantida.Controllers
             string numeroTarjeta = "4390930039010978";
 
             CuentaModel apiResult = await GetUser(numeroTarjeta);
-            ViewBag.loggedUser = apiResult;
+            decimal montoRecienteTotal = await GetComprasMonto(numeroTarjeta);
+
+            ViewBag.MontoRecienteTotal = montoRecienteTotal;
+            
 
             return View(apiResult);
         }
@@ -61,5 +64,31 @@ namespace SistemaAtlantida.Controllers
             }
         }
 
+
+        [HttpGet]
+        public async Task<decimal> GetComprasMonto(string numeroTarjeta) 
+        {
+            int mesActual = DateTime.Now.Month;
+            int mesAnterior = DateTime.Now.AddMonths(-1).Month;
+
+            string urlAPI = $"https://localhost:7238/api/compras/montoreciente/{numeroTarjeta}?mesanterior={mesAnterior}&mes={mesActual}";
+
+            decimal montoRecienteTotal = 0;
+
+            using(HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Clear();
+
+                HttpResponseMessage response = await client.GetAsync(urlAPI);
+
+                if( response.IsSuccessStatusCode )
+                {
+                    string responseJSON = await response.Content.ReadAsStringAsync();
+                    montoRecienteTotal = JsonConvert.DeserializeObject<decimal>(responseJSON);
+                }
+
+                return montoRecienteTotal;
+            }
+        }
     }
 }
