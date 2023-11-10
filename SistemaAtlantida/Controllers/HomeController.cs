@@ -20,19 +20,19 @@ namespace SistemaAtlantida.Controllers
         public async Task<IActionResult> Index()
         {
             string numeroTarjeta = "4390930039010978";
+            HttpContext.Session.SetString("numeroTarjeta", numeroTarjeta);
 
             CuentaModel apiResult = await GetUser(numeroTarjeta);
             decimal montoRecienteTotal = await GetComprasMonto(numeroTarjeta);
 
             ViewBag.MontoRecienteTotal = montoRecienteTotal;
             
-
             return View(apiResult);
         }
 
-        public IActionResult Privacy()
+        public IActionResult Compras()
         {
-            return View();
+            return RedirectToAction("Index", "Compras");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

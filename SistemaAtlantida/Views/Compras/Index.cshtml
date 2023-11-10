@@ -1,11 +1,15 @@
 ﻿@{
     ViewData["Title"] = "Index";
+    var numPrueba = ViewBag.numPrueba;
 }
 
 @model SistemaAtlantida.Tools.PaginatedList<CompraModel>
 
 <h1>Index</h1>
 
+<p>
+    @numPrueba
+</p>
 <p>
     <a asp-action="Create">Create New</a>
 </p>

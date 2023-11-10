@@ -2,11 +2,11 @@
 
 @{
     ViewData["Title"] = "Create";
+    var numeroTarjeta = ViewBag.numPrueba;
 }
 
 <h1>Create</h1>
 
-<h4>CompraModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,12 +14,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="NumeroTarjeta" class="control-label"></label>
-                <input asp-for="NumeroTarjeta" class="form-control" />
+                <input asp-for="NumeroTarjeta" disabled value=@numeroTarjeta class="form-control" />
                 <span asp-validation-for="NumeroTarjeta" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Fecha" class="control-label"></label>
-                <input asp-for="Fecha" class="form-control" />
+                <input asp-for="Fecha" type="date" class="form-control" />
                 <span asp-validation-for="Fecha" class="text-danger"></span>
             </div>
             <div class="form-group">

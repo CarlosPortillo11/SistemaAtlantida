@@ -12,10 +12,10 @@ namespace SistemaAtlantida.Controllers
         // GET: ComprasController
         public async Task<IActionResult> Index(int? pageNumber)
         {
+            //string numeroTarjeta ="4390930039010978";
+            string numPrueba = HttpContext.Session.GetString("numeroTarjeta");
 
-            //List<CompraModel> comprasFiltradas = await FiltrarCompras(numeroTarjeta);
-            string numeroTarjeta ="4390930039010978";
-            List<CompraModel> comprasResult = await GetCompras(numeroTarjeta);
+            List<CompraModel> comprasResult = await GetCompras(numPrueba);
             int pageSize = 2;
 
             return View(await PaginatedList<CompraModel>.CreateAsync(comprasResult, pageNumber ?? 1, pageSize));
@@ -24,29 +24,33 @@ namespace SistemaAtlantida.Controllers
 
         public ActionResult Create()
         {
+            string numPrueba = HttpContext.Session.GetString("numeroTarjeta");
+            ViewBag.numPrueba = numPrueba;
+
             return View();
         }
 
-        public async Task<List<CompraModel>> FiltrarCompras(string numeroTarjeta)
+        [HttpPost]
+        public ActionResult Create(CompraModel compraModel)
         {
-            List<CompraModel> comprasResult = await GetCompras(numeroTarjeta);
+            string urlAPI = $"https://localhost:7238/api/compras";
+            string numeroTarjeta = HttpContext.Session.GetString("numeroTarjeta");
+            compraModel.NumeroTarjeta = numeroTarjeta;
 
-            List<CompraModel> comprasFiltrada = new List<CompraModel>();
-            int mesActual = DateTime.Now.Month;
-            string formatoFecha = "yyyy/MM/dd";
+            using (HttpClient client = new HttpClient())
+            {
+                var response = client.PostAsJsonAsync<CompraModel>(urlAPI, compraModel);
+                response.Wait();
 
-            try 
-            {
-                comprasFiltrada = comprasResult.Where(compra => compra.Fecha.Month == mesActual).ToList();
-            }catch (Exception ex)
-            {
-                throw;
+                if(response.Result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index", "Compras");
+                }
             }
 
-            return comprasFiltrada;
+            return View();
         }
 
-        
         [HttpGet]
         public async Task<List<CompraModel>> GetCompras(string numeroTarjeta) 
         {
