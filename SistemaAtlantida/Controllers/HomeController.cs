@@ -35,6 +35,11 @@ namespace SistemaAtlantida.Controllers
             return RedirectToAction("Index", "Compras");
         }
 
+        public IActionResult Pagos() 
+        {
+            return RedirectToAction("Create", "Pagos");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
