@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using SistemaAtlantida.Models;
+using SistemaAtlantida.Tools;
 using System.Globalization;
 
 namespace SistemaAtlantida.Controllers
@@ -9,14 +10,21 @@ namespace SistemaAtlantida.Controllers
     public class ComprasController : Controller
     {
         // GET: ComprasController
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? pageNumber)
         {
-            string numeroTarjeta ="4390930039010978";
 
-            List<CompraModel> comprasResult = await GetCompras(numeroTarjeta);
             //List<CompraModel> comprasFiltradas = await FiltrarCompras(numeroTarjeta);
+            string numeroTarjeta ="4390930039010978";
+            List<CompraModel> comprasResult = await GetCompras(numeroTarjeta);
+            int pageSize = 2;
 
-            return View(comprasResult);
+            return View(await PaginatedList<CompraModel>.CreateAsync(comprasResult, pageNumber ?? 1, pageSize));
+            //return View(comprasResult);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
         }
 
         public async Task<List<CompraModel>> FiltrarCompras(string numeroTarjeta)

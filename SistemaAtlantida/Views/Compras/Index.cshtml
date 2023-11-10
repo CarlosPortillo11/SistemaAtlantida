@@ -1,8 +1,8 @@
-﻿@model IEnumerable<SistemaAtlantida.Models.CompraModel>
-
-@{
+﻿@{
     ViewData["Title"] = "Index";
 }
+
+@model SistemaAtlantida.Tools.PaginatedList<CompraModel>
 
 <h1>Index</h1>
 
@@ -13,18 +13,17 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NumeroTarjeta)
+                Numero de Tarjeta
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Fecha)
+                Fecha
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Descripcion)
+                Descripción
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Monto)
+                Monto
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -47,3 +46,19 @@
 }
     </tbody>
 </table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
