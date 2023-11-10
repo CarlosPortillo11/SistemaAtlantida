@@ -1,0 +1,66 @@
+﻿.user-welcome {
+    color: #D9272E;
+    font-weight: 600;
+    font-size: 1.4rem;
+    font-family: 'Neo-Sans';
+}
+
+.user-name {
+    color: #D9272E;
+    font-weight: 600;
+    font-size: 1.8rem;
+    margin-top: -5px;
+    font-family: 'Neo-Sans';
+}
+
+.info-box {
+    background-color: #D9272E;
+
+}
+
+.upper-info {
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    font-family: 'Neo-Sans';
+    margin: 0;
+
+    & .lower-info
+    {
+        font-size: 1.4rem;
+        display: block;
+        margin-top: -2px
+    }
+}
+
+.main-info {
+    color: white;
+    font-weight: 600;
+    font-size: 2rem;
+    margin: 0;
+    margin-top: 5px;
+    font-family: 'Neo-Sans';
+
+    & .info-dollar
+    {
+        font-size: 1rem;
+        margin-right: 2px;
+        margin-bottom: 0 ;
+        font-family: 'Neo-Sans';
+    }
+}
+
+.button-box {
+    text-decoration: none;
+    color: white;
+    background-color: #D9272E;
+    font-family: 'Neo-Sans';
+    padding-block: 32px;
+}
+
+.button-text {
+    margin: 0;
+    text-align: center
+}
+
+

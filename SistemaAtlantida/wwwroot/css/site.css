@@ -2,6 +2,16 @@ html {
   font-size: 14px;
 }
 
+@font-face {
+    font-family: 'Neo-Sans';
+    src: url('Neo-Sans-Regular.otf');
+}
+
+@font-face{
+    font-family: 'Neo-Sans-Bold';
+    src: url('Neo-Sans-Bold.otf');
+}
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -21,27 +31,17 @@ body {
   margin-bottom: 60px;
 }
 
-.user-navbar-name {
-    font-size: 0.9rem;
+.nav-header {
+    background-color: #D9272E
 }
 
-@media (min-width: 576px) {
-    .user-navbar-name {
-        font-size: 1.5rem;
-    }
+.nav-brand {
+    color: white;
+    text-align: center
 }
 
-.user-navbar-name {
-    font-size: 0.9rem;
-}
-
-@media (min-width: 576px) {
-    .user-navbar-name {
-        font-size: 1.5rem;
-    }
-}
-
-.user-navbar-number {
-    font-weight: 400;
-    font-size: 1rem;
+.body-container {
+    width: 100%;
+    max-width: 1600px;
+    margin-inline: auto;
 }

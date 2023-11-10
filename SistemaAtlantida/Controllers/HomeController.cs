@@ -23,8 +23,8 @@ namespace SistemaAtlantida.Controllers
             HttpContext.Session.SetString("numeroTarjeta", numeroTarjeta);
 
             CuentaModel apiResult = await GetUser(numeroTarjeta);
-            decimal montoRecienteTotal = await GetComprasMonto(numeroTarjeta);
 
+            decimal montoRecienteTotal = await GetComprasMonto(numeroTarjeta);
             ViewBag.MontoRecienteTotal = montoRecienteTotal;
             
             return View(apiResult);
