@@ -35,13 +35,17 @@ body {
     background-color: #D9272E
 }
 
-.nav-brand {
-    color: white;
-    text-align: center
+.navbar-brand {
+    font-family: Neo-Sans;
 }
 
 .body-container {
     width: 100%;
     max-width: 1600px;
     margin-inline: auto;
+}
+
+.navbar-container {
+    width: 100%;
+    max-width: 1600px;
 }
