@@ -8,14 +8,15 @@
 .user-name {
     color: #D9272E;
     font-weight: 600;
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     margin-top: -5px;
     font-family: 'Neo-Sans';
 }
 
 .info-box {
     background-color: #D9272E;
-
+    width: 45%;
+    max-width: 140px;
 }
 
 .upper-info {
@@ -36,7 +37,7 @@
 .main-info {
     color: white;
     font-weight: 600;
-    font-size: 2rem;
+    font-size: 1.7rem;
     margin: 0;
     margin-top: 5px;
     font-family: 'Neo-Sans';
@@ -52,15 +53,23 @@
 
 .button-box {
     text-decoration: none;
-    color: white;
     background-color: #D9272E;
-    font-family: 'Neo-Sans';
     padding-block: 32px;
+    margin-block: 4px;
 }
 
 .button-text {
+    color: white;
+    font-family: 'Neo-Sans';
+    font-weight: 600;
+    font-size: 1.9rem;
     margin: 0;
     text-align: center
 }
 
+.main-container{
+    width: 100%;
+    max-width: 1600px;
+    margin-inline: auto;
+}
 

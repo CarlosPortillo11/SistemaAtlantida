@@ -19,7 +19,7 @@ namespace SistemaAtlantida.Controllers
 
         public async Task<IActionResult> Index()
         {
-            string numeroTarjeta = "4390930039010978";
+            string numeroTarjeta = "4390930039010979";
             HttpContext.Session.SetString("numeroTarjeta", numeroTarjeta);
 
             CuentaModel apiResult = await GetUser(numeroTarjeta);
@@ -75,6 +75,7 @@ namespace SistemaAtlantida.Controllers
         {
             int mesActual = DateTime.Now.Month;
             int mesAnterior = DateTime.Now.AddMonths(-1).Month;
+            string tipoTransaccion = "Compra";
 
             string urlAPI = $"https://localhost:7238/api/compras/montoreciente/{numeroTarjeta}?mesanterior={mesAnterior}&mes={mesActual}";
 

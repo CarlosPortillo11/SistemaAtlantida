@@ -16,7 +16,7 @@ namespace SistemaAtlantida.Controllers
             string numPrueba = HttpContext.Session.GetString("numeroTarjeta");
 
             List<CompraModel> comprasResult = await GetCompras(numPrueba);
-            int pageSize = 2;
+            int pageSize = 4;
 
             return View(await PaginatedList<CompraModel>.CreateAsync(comprasResult, pageNumber ?? 1, pageSize));
             //return View(comprasResult);
