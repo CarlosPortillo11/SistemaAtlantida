@@ -25,6 +25,8 @@ namespace SistemaAtlantida.Controllers
         // GET: TransaccionesController/Create
         public ActionResult Create()
         {
+            ViewBag.tipoDeTransaccion = HttpContext.Session.GetString("tipoTransaccion");
+
             return View();
         }
 
@@ -50,6 +52,39 @@ namespace SistemaAtlantida.Controllers
             }
 
             return transaccionesResponse;
+        }
+
+        [HttpPost]
+        public ActionResult Create(TransaccionModel transaccionModel)
+        {
+            string urlAPI = $"https://localhost:7238/api/transacciones";
+
+            string numeroTarjeta = HttpContext.Session.GetString("numeroTarjeta");
+            string tipoDeTransaccion = HttpContext.Session.GetString("tipoTransaccion");
+            DateTime fechaActual = DateTime.UtcNow;
+
+            transaccionModel.NumeroTarjeta = numeroTarjeta;
+            transaccionModel.Tipo = tipoDeTransaccion;
+            transaccionModel.Fecha = fechaActual;
+
+            if(tipoDeTransaccion == "Pago")
+            {
+                transaccionModel.Descripcion = tipoDeTransaccion;
+            }
+
+            using(HttpClient client = new HttpClient())
+            {
+                var response = client.PostAsJsonAsync<TransaccionModel>(urlAPI, transaccionModel);
+                response.Wait();
+
+                if (response.Result.IsSuccessStatusCode) 
+                {
+                    return RedirectToAction("Index", "Transacciones");
+                }
+            }
+
+            return View();
+
         }
 
     }
