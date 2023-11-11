@@ -32,12 +32,14 @@ namespace SistemaAtlantida.Controllers
 
         public IActionResult Compras()
         {
-            return RedirectToAction("Index", "Compras");
+            HttpContext.Session.SetString("tipoTransaccion", "Compra");
+            return RedirectToAction("Index", "Transacciones", new {tipoTransaccion = "Compra"});
         }
 
         public IActionResult Pagos() 
         {
-            return RedirectToAction("Create", "Pagos");
+            HttpContext.Session.SetString("tipoTransaccion", "Pago");
+            return RedirectToAction("Index", "Transacciones", new { tipoTransaccion = "Venta" });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -77,7 +79,7 @@ namespace SistemaAtlantida.Controllers
             int mesAnterior = DateTime.Now.AddMonths(-1).Month;
             string tipoTransaccion = "Compra";
 
-            string urlAPI = $"https://localhost:7238/api/compras/montoreciente/{numeroTarjeta}?mesanterior={mesAnterior}&mes={mesActual}";
+            string urlAPI = $"https://localhost:7238/api/transacciones/reciente/{numeroTarjeta}?mesanterior={mesAnterior}&mes={mesActual}";
 
             decimal montoRecienteTotal = 0;
 
