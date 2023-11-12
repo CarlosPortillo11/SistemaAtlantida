@@ -33,13 +33,19 @@ namespace SistemaAtlantida.Controllers
         public IActionResult Compras()
         {
             HttpContext.Session.SetString("tipoTransaccion", "Compra");
-            return RedirectToAction("Index", "Transacciones", new {tipoTransaccion = "Compra"});
+            return RedirectToAction("Index", "Transacciones");
         }
 
         public IActionResult Pagos() 
         {
             HttpContext.Session.SetString("tipoTransaccion", "Pago");
-            return RedirectToAction("Index", "Transacciones", new { tipoTransaccion = "Venta" });
+            return RedirectToAction("Index", "Transacciones");
+        }
+
+        public IActionResult Transacciones()
+        {
+            HttpContext.Session.SetString("tipoTransaccion", "Todas");
+            return RedirectToAction("Index", "Transacciones");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

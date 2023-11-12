@@ -17,9 +17,12 @@ namespace SistemaAtlantida.Controllers
             ViewBag.tipoDeTransaccion = tipoDeTransaccion;
 
             List<TransaccionModel> transaccionesResult = await GetTransacciones(numeroTarjeta, tipoDeTransaccion);
+            var transacciones = from s in transaccionesResult select s;
+
+            transacciones = transacciones.OrderBy(s => s.Fecha);
             int pageSize = 6;
 
-            return View(await PaginatedList<TransaccionModel>.CreateAsync(transaccionesResult, pageNumber ?? 1, pageSize));
+            return View(await PaginatedList<TransaccionModel>.CreateAsync(transacciones.ToList(), pageNumber ?? 1, pageSize));
         }
 
         // GET: TransaccionesController/Create

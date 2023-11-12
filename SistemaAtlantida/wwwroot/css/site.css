@@ -28,7 +28,10 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
 }
 
 .nav-header {
@@ -39,13 +42,20 @@ body {
     font-family: Neo-Sans;
 }
 
+@media(min-width: 768px) {
+    .navbar-brand{
+        font-size: 1.4rem;
+    }
+}
+
 .body-container {
     width: 100%;
     max-width: 1600px;
     margin-inline: auto;
 }
 
-.navbar-container {
+.layout-container {
     width: 100%;
     max-width: 1600px;
 }
+

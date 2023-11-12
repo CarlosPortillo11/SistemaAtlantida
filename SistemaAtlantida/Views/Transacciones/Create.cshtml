@@ -5,43 +5,53 @@
     string tipoDeTransaccion = ViewBag.tipoDeTransaccion;
 }
 
-<h1>Create</h1>
+@section styles{
+    <link rel="stylesheet" href="~/css/transacciones/create.css" asp-append-version="true" />
+}
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @if (tipoDeTransaccion == "Pago")
-            {
-                <div class="form-group">
-                    <label asp-for="Descripcion" class="control-label"></label>
-                    <input asp-for="Descripcion" value=@tipoDeTransaccion disabled class="form-control" />
-                    <span asp-validation-for="Descripcion" class="text-danger"></span>
-                </div>
-            }
-            else
-            {
-                <div class="form-group">
-                    <label asp-for="Descripcion" class="control-label"></label>
-                    <input asp-for="Descripcion" class="form-control" />
-                    <span asp-validation-for="Descripcion" class="text-danger"></span>
-                </div>
-            }
-            <div class="form-group">
-                <label asp-for="Monto" class="control-label"></label>
-                <input asp-for="Monto" pattern="[0-9]+(\.[0-9]+)?" title="Ingrese un monto válido" class="form-control" />
-                <span asp-validation-for="Monto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="main-container px-3">
+    <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between col-12 mx-auto">
+        <p class="section-title text-center text-md-start my-4">Realizar @tipoDeTransaccion</p>
+        <a asp-action="Index" class="button-box my-4 mx-auto mx-md-0 col-12 col-md-2">
+            <p class="button-text">
+                Regresar
+            </p>
+        </a>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
+    <div class="flex flex-column my-4 form-container p-3 p-lg-4 col-md-8 col-xl-6">
+        <p class="form-title">
+            Ingrese los datos para su transacción:
+        </p>
+        <div class="col-md-10 mt-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @if (tipoDeTransaccion == "Pago")
+                {
+                    <div class="form-group">
+                        <label asp-for="Descripcion" class="control-label"></label>
+                        <input asp-for="Descripcion" value=@tipoDeTransaccion disabled class="form-control" />
+                        <span asp-validation-for="Descripcion" class="text-danger"></span>
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group">
+                        <label asp-for="Descripcion" class="control-label"></label>
+                        <input asp-for="Descripcion" class="form-control" />
+                        <span asp-validation-for="Descripcion" class="text-danger"></span>
+                    </div>
+                }
+                <div class="form-group">
+                    <label asp-for="Monto" class="control-label"></label>
+                    <input asp-for="Monto" pattern="[0-9]+(\.[0-9]+)?" title="Ingrese un monto válido" class="form-control" />
+                    <span asp-validation-for="Monto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn create-button" />
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 @section Scripts {

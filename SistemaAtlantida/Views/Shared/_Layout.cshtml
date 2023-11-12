@@ -12,42 +12,20 @@
 <body>
     <header>
         <nav class="navbar border-bottom box-shadow mb-3 nav-header">
-            <div class="container-fluid navbar-container">
-                <a class="navbar-brand text-white mx-auto fw-bold mx-md-0" asp-area="" asp-controller="Home" asp-action="Index">Sistema Atlantida</a>
-                <!--
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="d-flex flex-column">
-                        <h4 class="user-navbar-name">ViewBag.loggedUser.NombreTitular</h4>
-                        <p class="user-navbar-number">ViewBag.loggedUser.NumeroTarjeta</p>
-                    </div>
-                -->
-                <!--
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                            </li>
-                        </ul>
-                    </div>
-                -->
+            <div class="container-fluid layout-container">
+                <a class="navbar-brand text-white mx-auto fw-bold" asp-area="" asp-controller="Home" asp-action="Index">Sistema Atlantida</a>
             </div>
         </nav>
     </header>
     <div class="body-container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-5">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - SistemaAtlantida - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="border-top text-muted mt-auto">
+        <div class="container-fluid layout-container py-4">
+            &copy; 2023 - SistemaAtlantida - <a href="https://github.com/CarlosPortillo11" class="text-decoration-none text-muted">Carlos Portillo</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

@@ -13,10 +13,16 @@
     font-family: 'Neo-Sans';
 }
 
+.section-title{
+    font-weight: 600;
+    font-size: 2.2rem;
+    font-family: 'Neo-Sans';
+}
+
 .info-box {
     background-color: #D9272E;
     width: 45%;
-    max-width: 140px;
+    max-width: 150px;
 }
 
 .upper-info {
@@ -39,7 +45,7 @@
     font-weight: 600;
     font-size: 1.7rem;
     margin: 0;
-    margin-top: 5px;
+    margin-top: 12px;
     font-family: 'Neo-Sans';
 
     & .info-dollar
@@ -58,11 +64,12 @@
     margin-block: 4px;
 }
 
+
 .button-text {
     color: white;
     font-family: 'Neo-Sans';
     font-weight: 600;
-    font-size: 1.9rem;
+    font-size: 1.4rem;
     margin: 0;
     text-align: center
 }
@@ -73,3 +80,45 @@
     margin-inline: auto;
 }
 
+@media (min-width: 576px) {
+
+    .info-box {
+        max-width: 200px;
+    }
+
+    .upper-info{
+        font-size: 1.4rem;
+
+        & .lower-info
+        {
+            margin-top: -5px;
+            font-size: 2rem;
+        }
+    }
+
+    .main-info {
+        font-size: 2rem;
+
+        & .info-dollar {
+            font-size: 1.4rem;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .button-box {
+        width: 30%;
+    }
+
+    .button-text {
+        font-size: 1.6rem;
+    }
+
+    .user-welcome{
+        font-size: 1.8rem;
+    }
+
+    .user-name{
+        font-size: 2.2rem;
+    }
+}
