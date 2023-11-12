@@ -18,13 +18,13 @@
             </p>
         </a>
     </div>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="flex flex-column my-4 form-container p-3 p-lg-4 col-md-8 col-xl-6">
         <p class="form-title">
             Ingrese los datos para su transacción:
         </p>
         <div class="col-md-10 mt-4">
             <form asp-action="Create">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 @if (tipoDeTransaccion == "Pago")
                 {
                     <div class="form-group">
