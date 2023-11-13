@@ -18,7 +18,7 @@ namespace SistemaAtlantida.Models
 
         [Range(1, double.MaxValue, ErrorMessage = "Realice una transacción válida.")]
         [Required(ErrorMessage = "Introduzca un monto para la transacción.")]
-        [RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "Ingrese un dato válido.")]
+        [RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "Introduzca datos válidos.")]
         public decimal Monto { get; set; }
     }
 }

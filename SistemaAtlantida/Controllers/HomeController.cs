@@ -11,7 +11,6 @@ namespace SistemaAtlantida.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -83,7 +82,6 @@ namespace SistemaAtlantida.Controllers
         {
             int mesActual = DateTime.Now.Month;
             int mesAnterior = DateTime.Now.AddMonths(-1).Month;
-            string tipoTransaccion = "Compra";
 
             string urlAPI = $"https://localhost:7238/api/transacciones/reciente/{numeroTarjeta}?mesanterior={mesAnterior}&mes={mesActual}";
 

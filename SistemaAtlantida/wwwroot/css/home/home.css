@@ -19,6 +19,14 @@
     font-family: 'Neo-Sans';
 }
 
+.section-subtitle {
+    font-size: 1.6rem;
+    font-weight: 600;
+    font-family: 'Neo-Sans';
+    margin: 0;
+    padding: 0;
+}
+
 .info-box {
     background-color: #D9272E;
     width: 45%;
@@ -120,5 +128,9 @@
 
     .user-name{
         font-size: 2.2rem;
+    }
+
+    .section-subtitle {
+        font-size: 1.3rem;
     }
 }
