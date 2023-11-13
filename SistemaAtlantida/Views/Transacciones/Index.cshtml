@@ -12,64 +12,75 @@
 
 <div class="main-container px-3">
     <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between col-12 mx-auto">
-        @if (tipoDeTransaccion != "Todas")
-        {
-            <p class="section-title text-center text-md-start my-4">
-                Menú @tipoDeTransaccion
-            </p>
-        }
-        else
-        {
-            <p class="section-title text-center text-md-start my-4">
-                Lista de Transacciones
-            </p>
-        }
-        @if(tipoDeTransaccion != "Todas")
-        {
-            <a asp-action="Create" class="button-box my-4 mx-auto mx-md-0 col-12 col-md-2">
+        <div class="col-md-4">
+            @if (tipoDeTransaccion != "Todas")
+            {
+                <p class="section-title text-center text-md-start my-4">
+                    Menú @tipoDeTransaccion
+                </p>
+            }
+            else
+            {
+                <p class="section-title text-center text-md-start my-4">
+                    Lista de Transacciones
+                </p>
+            }
+        </div>
+        <div class="d-flex flex-column flex-md-row col-md-4 justify-content-between controls-container">
+            @if(tipoDeTransaccion != "Todas")
+            {
+                <a asp-action="Create" class="button-box my-2 mx-auto mx-md-0 col-12">
+                    <p class="button-text">
+                        Crear
+                    </p>
+                </a>
+            }
+            <a asp-action="Index" asp-controller="Home" class="button-box my-2 col-12">
                 <p class="button-text">
-                    Crear
+                    Regresar
                 </p>
             </a>
-        }
+        </div>
     </div>
-    <table class="table my-4">
-        <thead>
-            <tr>
-                <th>
-                    Numero de Tarjeta
-                </th>
-                <th>
-                    Fecha
-                </th>
-                <th>
-                    Descripción
-                </th>
-                <th>
-                    Monto
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach (var item in Model) {
-                var fechaCorta = item.Fecha.ToShortDateString();
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NumeroTarjeta)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => fechaCorta)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Descripcion)
-                </td>
-                <td>
-                    $@Html.DisplayFor(modelItem => item.Monto)
-                </td>
-            </tr>
-        }
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table mt-5 mb-4">
+            <thead>
+                <tr>
+                    <th>
+                        Numero de Tarjeta
+                    </th>
+                    <th>
+                        Fecha
+                    </th>
+                    <th>
+                        Descripción
+                    </th>
+                    <th>
+                        Monto
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model) {
+                    var fechaCorta = item.Fecha.ToShortDateString();
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumeroTarjeta)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => fechaCorta)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                    <td>
+                        $@Html.DisplayFor(modelItem => item.Monto)
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
     @{
         var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
         var nextDisabled = !Model.HasNextPage ? "disabled" : "";
@@ -84,4 +95,11 @@
        class="btn btn-default pagination-button @nextDisabled">
         Next
     </a>
+    <div>
+        <a asp-action="Index" asp-controller="Home" class="button-box my-4">
+            <p class="button-text">
+                Regresar
+            </p>
+        </a>
+    </div>
 </div>

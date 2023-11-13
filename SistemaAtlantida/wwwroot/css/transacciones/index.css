@@ -53,6 +53,11 @@ th{
         padding-block: 12px;
         max-width: 130px;
     }
+
+    .controls-container {
+        max-width: 270px;
+    }
+
 }
 
 @media(min-width: 1200px){
