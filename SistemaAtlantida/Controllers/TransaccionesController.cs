@@ -87,6 +87,7 @@ namespace SistemaAtlantida.Controllers
             }
 
             ModelState.AddModelError(string.Empty, "No se pudo procesar su transacción, revise los datos e intente de nuevo.");
+            ViewBag.tipoDeTransaccion = HttpContext.Session.GetString("tipoTransaccion");
             return View();
         }
 
