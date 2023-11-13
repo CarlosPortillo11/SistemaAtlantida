@@ -18,7 +18,7 @@ namespace SistemaAtlantida.Controllers
 
         public async Task<IActionResult> Index()
         {
-            string numeroTarjeta = "4390930039010978";
+            string numeroTarjeta = "4390930039010961";
             HttpContext.Session.SetString("numeroTarjeta", numeroTarjeta);
 
             CuentaModel apiResult = await GetUser(numeroTarjeta);
